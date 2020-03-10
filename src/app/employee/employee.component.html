@@ -1,0 +1,90 @@
+<div style="float: right;">
+  <button class="btn btn-danger"
+                    style="width:150px"
+                    type="button"
+                    (click)="deleteEmployee()">
+              Delete The Employee
+            </button>
+</div>
+<div class="container">
+  <h2>Employee Registeration Form</h2>
+  <div class="card-body"  >
+    <form novalidate action="" method="POST" #form="ngForm" (ngSubmit)="onSubmit(form)">
+     <div>
+        <label for="firstname">First Name:</label><br>
+        <input type="text" name="firstname" id="firstname" placeholder="Fname" [(ngModel)]=employee.firstname><br><br>
+
+        <label for="lastname">Last Name: </label><br>
+        <input type="text"  id="lastname" placeholder="Lname" name="lastname" [(ngModel)]=employee.lastname required><br><br>
+
+        <label for="mail">Email: </label><br>
+        <input type="Email" id="mail" placeholder="Email" name="mail" [(ngModel)]=employee.mail required><br><br>
+
+
+        <label for="cntct">Contact number: </label><br>
+        <input type="number" id="cntct" placeholder="Contact" name="contact" [(ngModel)]=employee.contact required><br><br>
+
+        <label for="add">Address: </label><br>
+        <textarea name="address" id="add" placeholder="Address" [(ngModel)]=employee.address required></textarea><br><br>
+
+        <label for="uname">Username:</label><br>
+        <input type="text" id="uname" placeholder="UserName" name="username" [(ngModel)]=employee.username required><br><br>
+
+        <label for="pwd">Password:</label><br>
+        <input type="Password" id="pwd" placeholder="passwrd" name="pwd" [(ngModel)]=employee.pwd required><br><br>
+
+        <label>Gender:</label><br>
+        <input type="radio" id="malegender" name="gender" value="male" [(ngModel)]=employee.gender required>
+        <label for="malegender">Male</label><br>
+        <input type="radio" id="femalegender" name="gender" value="female" [(ngModel)]=employee.gender required>
+        <label for="femalegender">Female</label><br><br>
+
+        <label id="qual">	Qualification: </label><br>
+        <select id="qual" name="qualfication"  required>
+          <option hidden disabled selected value>--Select--</option>
+          <option *ngFor="let type of Qualifiacation | async">
+            {{type}}
+          </option>
+        </select><br><br>
+
+        <label id="exp">	Experience: </label><br>
+        <select id="exp" name="experience"  required>
+          <option hidden disabled selected value>--select--</option>
+          <option *ngFor="let type of Experiences | async">
+            {{type}}
+          </option>
+        </select><br><br>
+
+
+        <label for="Codes" >Coding Language: </label><br>
+        <div *ngFor="let coding of Codes | async">
+          <label>
+        <input type="checkbox" name="Codes" >
+          {{coding}}
+        </label>
+
+      </div>
+       <!-- <button class="btn btn-primary" type="submit" name="submit">Submit</button>-->
+        <div class="form-group row mb-2">
+          <div class="col-md-4">
+            <button class="btn btn-primary mr-3"
+                    style="width:80px"
+                    type="button"
+                    (click)="saveProduct()">
+              Submit
+            </button>
+            <button class="btn btn-outline-secondary mr-3"
+                    style="width:80px"
+                    type="button"
+                    title="Cancel your edits"
+                    [routerLink]="['/employee']">
+              Cancel
+            </button>
+
+          </div>
+        </div>
+    </div>
+   </form>
+   </div>
+</div>
+
