@@ -11,8 +11,7 @@ import { EmployeeComponent } from './employee.component';
     SharedModule,
     RouterModule.forChild([
       {path:'employee',component:EmployeeListComponent},
-      {path:'employee/:id/edit', component:EmployeeComponent},
-      {path:'employee/:id/delete',component:EmployeeComponent}
+      {path:'employee/:id/edit', component:EmployeeComponent}
     ])
   ],
   declarations: [

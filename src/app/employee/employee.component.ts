@@ -45,12 +45,12 @@ export class EmployeeComponent implements OnInit {
     this.employee = employee;
 
     if (!this.employee) {
-      this.pageTitle = 'No product found';
+      this.pageTitle = 'No Employee found';
     } else {
       if (this.employee.id === 0) {
-        this.pageTitle = 'Add Product';
+        this.pageTitle = 'Add Employee';
       } else {
-        this.pageTitle = `Edit Product: ${this.employee.firstname}-${this.employee.lastname}`;
+        this.pageTitle = `Edit Employee: ${this.employee.firstname}-${this.employee.lastname}`;
       }
     }
   }
@@ -75,20 +75,6 @@ export class EmployeeComponent implements OnInit {
       this.messageService.addMessage(message);
    }*/
    this.router.navigate(['/employee']);
-  }
-  deleteEmployee(): void {
-
-    if (this.employee.id === 0) {
-      // Don't delete, it was never saved.
-      this.onSaveComplete();
-    } else {
-      if (confirm(`Really delete the employee: ${this.employee.firstname}?`)) {
-        this.dataservice.deleteEmployee(this.employee.id).subscribe({
-          next: () => this.onSaveComplete(),
-          error: err => this.errorMessage = err
-        });
-      }
-    }
   }
 
 }

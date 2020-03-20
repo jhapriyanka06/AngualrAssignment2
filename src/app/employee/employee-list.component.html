@@ -31,7 +31,8 @@
               </button>
             </td>
             <td>
-              <button class="btn btn-danger" [routerLink]="['/employee',employee.id,'delete']">
+
+              <button class="btn btn-danger"  (click)="deleteEmployee(employee)">
                 Delete
               </button>
             </td>
