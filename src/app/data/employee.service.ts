@@ -38,7 +38,7 @@ export class EmployeeService {
     employee.id = null;
     return this.http.post<Employee>(this.employeeUrl,employee, { headers })
       .pipe(
-        tap(data => console.log('createProduct: ' + JSON.stringify(data))),
+        tap(data => console.log('createEmployee: ' + JSON.stringify(data))),
         catchError(this.handleError)
       );
   }
@@ -48,7 +48,7 @@ export class EmployeeService {
     const url = `${this.employeeUrl}/${employee.id}`;
     return this.http.put<Employee>(url, employee, { headers })
       .pipe(
-        tap(() => console.log('updateProduct: ' + employee.id)),
+        tap(() => console.log('updateEmployee: ' + employee.id)),
         // Return the product on an update
         map(() => employee),
         catchError(this.handleError)
@@ -57,9 +57,9 @@ export class EmployeeService {
   deleteEmployee(id: number): Observable<{}> {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
     const url = `${this.employeeUrl}/${id}`;
-    return this.http.delete<Employee>(url, { headers })
+    return this.http.delete<Employee>(url,  { headers })
       .pipe(
-        tap(data => console.log('deleteProduct: ' + id)),
+        tap(data => console.log('deleteEmployee: ' + id)),
         catchError(this.handleError)
       );
   }
