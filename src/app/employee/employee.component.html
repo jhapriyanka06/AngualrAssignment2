@@ -2,16 +2,16 @@
 <div class="container">
   <h2>Employee Registeration Form</h2>
   <div class="card-body"  >
-    <form novalidate action="" method="POST" #form="ngForm" (ngSubmit)="onSubmit(form)">
+    <form #form="ngForm" ngNativeValidate>
      <div>
         <label for="firstname">First Name:</label><br>
-        <input type="text" name="firstname" id="firstname" placeholder="Fname" [(ngModel)]=employee.firstname><br><br>
+        <input type="text" name="firstname" id="firstname" placeholder="Fname" [(ngModel)]=employee.firstname required><br><br>
 
         <label for="lastname">Last Name: </label><br>
         <input type="text"  id="lastname" placeholder="Lname" name="lastname" [(ngModel)]=employee.lastname required><br><br>
 
         <label for="mail">Email: </label><br>
-        <input type="Email" id="mail" placeholder="Email" name="mail" [(ngModel)]=employee.mail required><br><br>
+        <input type="Email" id="mail" placeholder="Email" name="mail" [(ngModel)]=employee.mail pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required><br><br>
 
 
         <label for="cntct">Contact number: </label><br>
@@ -33,7 +33,7 @@
         <label for="femalegender">Female</label><br><br>
 
         <label id="qual">	Qualification: </label><br>
-        <select id="qual" name="qualfication"  required>
+        <select id="qual" name="qualfication" [(ngModel)]=employee.qulaification required>
           <option hidden disabled selected value>--Select--</option>
           <option *ngFor="let type of Qualifiacation | async">
             {{type}}
@@ -41,7 +41,7 @@
         </select><br><br>
 
         <label id="exp">	Experience: </label><br>
-        <select id="exp" name="experience"  required>
+        <select id="exp" name="experience" [(ngModel)]=employee.experience required>
           <option hidden disabled selected value>--select--</option>
           <option *ngFor="let type of Experiences | async">
             {{type}}
@@ -63,7 +63,8 @@
             <button class="btn btn-primary mr-3"
                     style="width:80px"
                     type="button"
-                    (click)="saveProduct()">
+                    (click)="saveEmployee()"
+                    [disabled]="!form.form.valid">
               Submit
             </button>
             <button class="btn btn-outline-secondary mr-3"

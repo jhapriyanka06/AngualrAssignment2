@@ -55,7 +55,7 @@ export class EmployeeComponent implements OnInit {
     }
   }
 
-  saveProduct(): void {
+  saveEmployee(): void {
     if(true === true){
       if (this.employee.id === 0) {
         this.dataservice.createEmployee(this.employee).subscribe({
@@ -71,9 +71,7 @@ export class EmployeeComponent implements OnInit {
     }
   }
   onSaveComplete(): void {
-   /* if (message) {
-      this.messageService.addMessage(message);
-   }*/
+
    this.router.navigate(['/employee']);
   }
 
